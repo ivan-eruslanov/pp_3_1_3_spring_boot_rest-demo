@@ -124,8 +124,8 @@ if (document.getElementById('v-pills-admin')) {
             </label>
         `;
         user.roles.forEach(role => {
-            if (role.id === 1) document.getElementById('optionUser').selected = true;
-            if (role.id === 2) document.getElementById('optionAdmin').selected = true;
+            if (role.id === 2) document.getElementById('optionUser').selected = true;
+            if (role.id === 1) document.getElementById('optionAdmin').selected = true;
         });
     };
 
@@ -164,8 +164,8 @@ if (document.getElementById('v-pills-admin')) {
         event.preventDefault();
         //Собрать информацию о новом пользователе в объект
         const newUserRoles = [];
-        if (document.getElementById('newRoleUser').selected) newUserRoles.push({id: 1, authority: 'ROLE_USER'});
-        if (document.getElementById('newRoleAdmin').selected) newUserRoles.push({id: 2, authority: 'ROLE_ADMIN'});
+        if (document.getElementById('newRoleUser').selected) newUserRoles.push({id: 2, authority: 'ROLE_USER'});
+        if (document.getElementById('newRoleAdmin').selected) newUserRoles.push({id: 1, authority: 'ROLE_ADMIN'});
         const newUser = {
             firstName: document.getElementById('newUserFirstName').value,
             lastName: document.getElementById('newUserLastName').value,
@@ -200,8 +200,8 @@ if (document.getElementById('v-pills-admin')) {
     document.getElementById('editForm').addEventListener('submit', (event) => {
         event.preventDefault();
         const userRolesEdited = [];
-        if (document.getElementById('optionUser').selected) userRolesEdited.push({id: 1, authority: 'ROLE_USER'});
-        if (document.getElementById('optionAdmin').selected) userRolesEdited.push({id: 2, authority: 'ROLE_ADMIN'});
+        if (document.getElementById('optionUser').selected) userRolesEdited.push({id: 2, authority: 'ROLE_USER'});
+        if (document.getElementById('optionAdmin').selected) userRolesEdited.push({id: 1, authority: 'ROLE_ADMIN'});
         const userEdited = {
             id: document.getElementById('idEdit').value,
             firstName: document.getElementById('firstNameEdit').value,

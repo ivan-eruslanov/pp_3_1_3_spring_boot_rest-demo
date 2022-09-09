@@ -1,4 +1,4 @@
-package ru.eruslanov.demo.rest;
+package ru.eruslanov.demo.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,7 +21,7 @@ public class UserRestController {
     }
 
     @GetMapping
-    public ResponseEntity<User> getUserById(Principal principal) {
-        return new ResponseEntity<>(userService.getUserByUsername(principal.getName()), HttpStatus.OK); // 200
+    public ResponseEntity<User> showInfoCurrentUser(Principal principal) {
+        return new ResponseEntity<>(userService.getUserByName(principal.getName()), HttpStatus.OK); // 200
     }
 }

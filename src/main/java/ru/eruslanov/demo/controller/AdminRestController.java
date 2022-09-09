@@ -1,14 +1,17 @@
-package ru.eruslanov.demo.rest;
+package ru.eruslanov.demo.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ru.eruslanov.demo.model.User;
 import ru.eruslanov.demo.service.UserService;
 
+import java.security.Principal;
 import java.util.List;
 
 @RestController
+@CrossOrigin
 @RequestMapping("api/v1/admin")
 public class AdminRestController {
 
