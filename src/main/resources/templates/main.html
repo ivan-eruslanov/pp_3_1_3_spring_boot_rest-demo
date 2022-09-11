@@ -11,12 +11,8 @@
 <body>
 
 <header class="d-flex flex-wrap justify-content-between align-items-stretch text-white py-2 bg-dark">
-  <div class="fs-3 ps-4 me-1 d-inline-block">
-    <span class="fw-bolder" th:text="${authUser.username}"></span>
-    <span> with roles: </span>
-    <th:block th:each="role : ${authUser.roles}">
-      <span th:utext="${#strings.substringAfter(role.getAuthority, 'ROLE_')}"></span>
-    </th:block>
+  <div class="fs-3 ps-4 me-1 d-inline-block" id="headerInfo">
+      <!-- with js -->
   </div>
   <div>
     <button form="logout" class="fs-5 pe-4 btn btn-dark text-white-50" type="submit">Logout</button>

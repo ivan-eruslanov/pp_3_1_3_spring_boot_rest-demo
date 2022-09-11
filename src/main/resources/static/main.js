@@ -1,4 +1,4 @@
-const requestUrl = 'http://localhost:8080/api/v1';
+const requestUrl = 'http://localhost:8080/api';
 
 if (!document.querySelector('.messages')) {
     const container = document.createElement('div');
@@ -7,6 +7,25 @@ if (!document.querySelector('.messages')) {
     document.body.appendChild(container);
 }
 const messages = document.querySelector('.messages');
+
+// header
+const renderHeaderInfo = (user) => {
+    let content = `
+        <span class="fw-bolder"></span>
+        <span> with roles: </span>
+        <span>
+    `;
+    user.roles.forEach(role => {
+        const authority = role.authority;
+        content += `
+            <span>${authority.substring(authority.lastIndexOf('_') + 1)}</span>
+        `;
+    });
+    content += '</span>';
+    document.getElementById('headerInfo').innerHTML = content;
+}
+
+sendRequestInfo('GET', '/user').then(user => renderHeaderInfo(user))
 
 const renderUserInfoTableRowContent = (user) => {
     let content = `
