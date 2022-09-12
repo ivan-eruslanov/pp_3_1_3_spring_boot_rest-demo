@@ -3,13 +3,13 @@ package ru.eruslanov.demo.controller;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 import ru.eruslanov.demo.model.User;
 import ru.eruslanov.demo.service.UserService;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("api/")
 public class AdminRestController {
 
     private final UserService userService;
@@ -18,7 +18,13 @@ public class AdminRestController {
         this.userService = userService;
     }
 
-    @GetMapping("/admin")
+
+    @GetMapping("/main")
+    public ModelAndView getMainPage() {
+        return new ModelAndView("main");
+    }
+
+    @GetMapping("api/admin")
     public ResponseEntity<List<User>> getInfoUsersList() {
         List<User> userList = userService.getAllUsers();
         if (userList.isEmpty()) {
@@ -27,7 +33,7 @@ public class AdminRestController {
         return new ResponseEntity<>(userList, HttpStatus.OK); // 200
     }
 
-    @GetMapping("/admin/{id}")
+    @GetMapping("api/admin/{id}")
     public ResponseEntity<User> getUserById(@PathVariable long id) {
         User user = userService.getUserById(id);
         if (user == null) {
@@ -36,7 +42,7 @@ public class AdminRestController {
         return new ResponseEntity<>(user, HttpStatus.OK); // 200
     }
 
-    @PostMapping("/admin")
+    @PostMapping("api/admin")
     public ResponseEntity<User>  getSaveUserForm(@RequestBody User user) {
         if (userService.addUser(user)) {
             return new ResponseEntity<>(user, HttpStatus.CREATED); // 201
@@ -44,7 +50,7 @@ public class AdminRestController {
         return new ResponseEntity<>(user, HttpStatus.CONFLICT); // 400
     }
 
-    @PutMapping("/admin")
+    @PutMapping("api/admin")
     public ResponseEntity<User> getUpdateUserForm(@RequestBody User user) {
         if (userService.updateUser(user)) {
             return new ResponseEntity<>(user, HttpStatus.OK); // 200
@@ -52,7 +58,7 @@ public class AdminRestController {
         return new ResponseEntity<>(HttpStatus.CONFLICT); // 400
     }
 
-    @DeleteMapping("/admin/{id}")
+    @DeleteMapping("api/admin/{id}")
     public ResponseEntity<Long>  getRemoveUserForm(@PathVariable long id) {
         if (userService.deleteUserById(id)) {
             return new ResponseEntity<>(id, HttpStatus.OK); // 200
