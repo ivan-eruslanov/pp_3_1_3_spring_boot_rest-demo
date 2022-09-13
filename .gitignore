@@ -15,6 +15,7 @@ target/
 
 ### IntelliJ IDEA ###
 target
+.jpb
 .idea
 *.iws
 *.iml
