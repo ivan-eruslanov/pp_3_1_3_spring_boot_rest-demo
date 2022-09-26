@@ -11,7 +11,7 @@ const messages = document.querySelector('.messages');
 // header
 const renderHeaderInfo = (user) => {
     let content = `
-        <span class="fw-bolder"></span>
+        <span class="fw-bolder">${user.username}</span>
         <span> with roles: </span>
         <span>
     `;
